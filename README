@@ -1,13 +1,13 @@
-Data::Dumper::Concise::Compact - like Data::Dumper and cohorts but with
+Data::Dumper::Concise::Aligned - like Data::Dumper and cohorts but with
 even less indentation for stupidly compact display.
 
 To install this module, use CPAN, for example:
 
-  cpanm Data::Dumper::Concise::Compact
+  cpanm Data::Dumper::Concise::Aligned
 
 For the current release, see:
 
-http://github.com/thrig/Data-Dumper-Concise-Compact
+http://github.com/thrig/Data-Dumper-Concise-Aligned
 
 which can be installed by cloning that directory then running `cpanm .`
 therein.

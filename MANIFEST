@@ -2,6 +2,6 @@ LICENSE
 MANIFEST
 Makefile.PL
 README
-lib/Data/Dumper/Concise/Compact.pm
-t/Data-Dumper-Concise-Compact.t
+lib/Data/Dumper/Concise/Aligned.pm
+t/Data-Dumper-Concise-Aligned.t
 t/pod.t

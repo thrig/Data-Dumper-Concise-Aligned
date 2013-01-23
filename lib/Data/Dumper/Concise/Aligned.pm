@@ -1,4 +1,4 @@
-package Data::Dumper::Concise::Compact;
+package Data::Dumper::Concise::Aligned;
 
 use 5.010000;
 use Scalar::Util qw/reftype/;
@@ -7,14 +7,14 @@ use Text::Wrap qw/wrap/;
 our $VERSION = '0.20';
 
 BEGIN { @ISA = qw(Exporter) }
-@EXPORT = qw(DumperC DumperObject);
+@EXPORT = qw(DumperA DumperObject);
 
 sub DumperObject {
   my $dd = Data::Dumper->new( [] );
   $dd->Terse(1)->Indent(0)->Useqq(1)->Deparse(1)->Quotekeys(0)->Sortkeys(1);
 }
 
-sub DumperC {
+sub DumperA {
   my $str_buf;
   my $prefix = '';
   for my $o (@_) {
@@ -34,33 +34,32 @@ __END__
 
 =head1 NAME
 
-Data::Dumper::Concise::Compact - Even less indentation and string passing
+Data::Dumper::Concise::Aligned - even less indentation plus string prefix
 
 =head1 SYNOPSIS
 
-  use Data::Dumper::Concise::Compact;
+  use Data::Dumper::Concise::Aligned;
   warn DumperC This => \@something, That => \@otherthing;
 
 =head1 DESCRIPTION
 
 Like L<Data::Dumper::Concise> except with even less indentation, and
-string passing such that strings are printed with a trailing space, and
-each other object passed is printed with a trailing newline. Used in
-particular to look at data that needs to be shown in as compact a manner
-as possible for easy vertical comparison, hence C<Indent(0)>:
+string prefixing of the wrapped-as-necessary output. Used in particular
+to look at data that needs to be shown in as compact a manner as
+possible for easy vertical comparison, for example:
 
   S [[2,2,1,2,2,2,1],[1,2,2,2,1,2,2]]
   D [[2,1,2,2,2,2,1],[2,2,1,2,2,1,2]]
 
-Could possibly be done via C<DumperF> of L<Data::Dumper::Concise>, but
-that's more typing, and not exactly the string vs. record newline
-handling I wanted.
+This could possibly be done via C<DumperF> of
+L<Data::Dumper::Concise>, but that's more typing, and not exactly the
+string prefix handling I wanted.
 
 In C<vi> type editors, an C<ab> configuration along the lines of the
 following can expand out to include the desired Dumper routine:
 
   ab PUDD use Data::Dumper::Concise; warn Dumper
-  ab PUCC use Data::Dumper::Concise::Compact; warn DumperC
+  ab PUCC use Data::Dumper::Concise::Aligned; warn DumperA
 
 =head1 AUTHOR
 
