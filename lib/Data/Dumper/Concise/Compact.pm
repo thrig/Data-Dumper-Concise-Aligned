@@ -42,7 +42,7 @@ Data::Dumper::Concise::Compact - Even less indentation and string passing
 =head1 SYNOPSIS
 
   use Data::Dumper::Concise::Compact;
-  warn Dumper "This", \@something, "That", \@otherthing;
+  warn Dumper This => \@something, That => \@otherthing;
 
 =head1 DESCRIPTION
 
