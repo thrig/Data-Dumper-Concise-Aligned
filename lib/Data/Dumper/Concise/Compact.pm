@@ -1,19 +1,21 @@
 package Data::Dumper::Concise::Compact;
 
 use 5.010000;
-use strict;
-use warnings;
-
-our @ISA = qw();
 
 our $VERSION = '0.01';
 
+BEGIN { @ISA = qw(Exporter) }
+@EXPORT = qw(Dumper DumperObject);
 
-# Preloaded methods go here.
+sub DumperObject {
+  my $dd = Data::Dumper->new([]);
+  $dd->Terse(1)->Indent(0)->Useqq(1)->Deparse(1)->Quotekeys(0)->Sortkeys(1);
+}
+
+sub Dumper { DumperObject->Values([ @_ ])->Dump }
 
 1;
 __END__
-# Below is stub documentation for your module. You'd better edit it!
 
 =head1 NAME
 
@@ -66,7 +68,7 @@ If you have a web site set up for your module, mention it here.
 
 =head1 AUTHOR
 
-Jeremy Mates, E<lt>jmates@macosforge.orgE<gt>
+Jeremy Mates, E<lt>jmates@cpan.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
