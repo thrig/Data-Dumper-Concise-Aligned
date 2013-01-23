@@ -7,14 +7,14 @@ use Text::Wrap qw/wrap/;
 our $VERSION = '0.20';
 
 BEGIN { @ISA = qw(Exporter) }
-@EXPORT = qw(Dumper DumperObject);
+@EXPORT = qw(DumperC DumperObject);
 
 sub DumperObject {
   my $dd = Data::Dumper->new( [] );
   $dd->Terse(1)->Indent(0)->Useqq(1)->Deparse(1)->Quotekeys(0)->Sortkeys(1);
 }
 
-sub Dumper {
+sub DumperC {
   my $str_buf;
   my $prefix = '';
   for my $o (@_) {
