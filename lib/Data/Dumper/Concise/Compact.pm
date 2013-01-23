@@ -4,7 +4,7 @@ use 5.010000;
 use Scalar::Util qw/reftype/;
 use Text::Wrap qw/wrap/;
 
-our $VERSION = '0.01';
+our $VERSION = '0.20';
 
 BEGIN { @ISA = qw(Exporter) }
 @EXPORT = qw(Dumper DumperObject);
@@ -14,22 +14,19 @@ sub DumperObject {
   $dd->Terse(1)->Indent(0)->Useqq(1)->Deparse(1)->Quotekeys(0)->Sortkeys(1);
 }
 
-{
+sub Dumper {
+  my $str_buf;
   my $prefix = '';
-
-  sub Dumper {
-    my $str_buf;
-    for my $o (@_) {
-      if ( defined reftype $o) {
-        $str_buf .=
-          wrap( $prefix, $prefix, DumperObject->Values( [$o] )->Dump ) . "\n";
-      } else {
-        $prefix = $o;
-        $prefix .= ' ' unless $prefix =~ m/\s$/;
-      }
+  for my $o (@_) {
+    if ( defined reftype $o) {
+      $str_buf .=
+        wrap( $prefix, $prefix, DumperObject->Values( [$o] )->Dump ) . "\n";
+    } else {
+      $prefix = $o;
+      $prefix .= ' ' unless $prefix =~ m/\s$/;
     }
-    return $str_buf;
   }
+  return $str_buf;
 }
 
 1;
