@@ -1,0 +1,5 @@
+Makefile.PL
+MANIFEST
+README
+t/Data-Dumper-Concise-Compact.t
+lib/Data/Dumper/Concise/Compact.pm
