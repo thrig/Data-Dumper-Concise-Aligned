@@ -39,7 +39,7 @@ Data::Dumper::Concise::Aligned - even less indentation plus string prefix
 =head1 SYNOPSIS
 
   use Data::Dumper::Concise::Aligned;
-  warn DumperC This => \@something, That => \@otherthing;
+  warn DumperA This => \@something, That => \@otherthing;
 
 =head1 DESCRIPTION
 
