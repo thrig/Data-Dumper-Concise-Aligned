@@ -39,7 +39,7 @@ Data::Dumper::Concise::Compact - Even less indentation and string passing
 =head1 SYNOPSIS
 
   use Data::Dumper::Concise::Compact;
-  warn Dumper This => \@something, That => \@otherthing;
+  warn DumperC This => \@something, That => \@otherthing;
 
 =head1 DESCRIPTION
 
@@ -55,6 +55,12 @@ as possible for easy vertical comparison, hence C<Indent(0)>:
 Could possibly be done via C<DumperF> of L<Data::Dumper::Concise>, but
 that's more typing, and not exactly the string vs. record newline
 handling I wanted.
+
+In C<vi> type editors, an C<ab> configuration along the lines of the
+following can expand out to include the desired Dumper routine:
+
+  ab PUDD use Data::Dumper::Concise; warn Dumper
+  ab PUCC use Data::Dumper::Concise::Compact; warn DumperC
 
 =head1 AUTHOR
 
