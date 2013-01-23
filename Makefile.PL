@@ -1,12 +1,36 @@
 use 5.010000;
+
+use strict;
+use warnings;
 use ExtUtils::MakeMaker;
-# See lib/ExtUtils/MakeMaker.pm for details of how to influence
-# the contents of the Makefile that is written.
-WriteMakefile(
-    NAME              => 'Data::Dumper::Concise::Compact',
-    VERSION_FROM      => 'lib/Data/Dumper/Concise/Compact.pm', # finds $VERSION
-    PREREQ_PM         => {}, # e.g., Module::Name => 1.1
-    ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
-      (ABSTRACT_FROM  => 'lib/Data/Dumper/Concise/Compact.pm', # retrieve abstract from module
-       AUTHOR         => 'Jeremy Mates <jmates@macosforge.org>') : ()),
+
+my %params = (
+  NAME         => 'Data::Dumper::Concise::Compact',
+  ABSTRACT     => 'even less indentation and string passing',
+  VERSION_FROM => 'lib/Data/Dumper/Concise/Compact.pm',
+  PREREQ_PM    => {
+    'Scalar::Util' => 0,
+    'Test::More'   => 0,
+    'Text::Wrap'   => 0,
+  },
+  ( $] >= 5.005
+    ? ( AUTHOR => 'Jeremy Mates <jmates@cpan.org>' )
+    : ()
+  ),
 );
+
+if ( $ExtUtils::MakeMaker::VERSION =~ /^\d\.\d\d$/ and $ExtUtils::MakeMaker::VERSION > 6.30 ) {
+  $params{LICENSE} = 'perl';
+}
+
+if ( $ExtUtils::MakeMaker::VERSION ge '6.46' ) {
+  $params{META_MERGE} = {
+    resources => {
+      homepage   => 'http://github.com/thrig/Data-Dumper-Concise-Compact',
+      license    => 'http://dev.perl.org/licenses/',
+      repository => 'http://github.com/thrig/Data-Dumper-Concise-Compact',
+    }
+  };
+}
+
+WriteMakefile(%params);
