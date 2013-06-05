@@ -1,3 +1,5 @@
+#!perl
+
 use 5.010000;
 
 use strict;
@@ -31,6 +33,10 @@ if ( $ExtUtils::MakeMaker::VERSION ge '6.46' ) {
       repository => 'http://github.com/thrig/Data-Dumper-Concise-Aligned',
     }
   };
+}
+
+if ( $ExtUtils::MakeMaker::VERSION ge '6.48' ) {
+  $params{MIN_PERL_VERSION} = 5.010000;
 }
 
 WriteMakefile(%params);

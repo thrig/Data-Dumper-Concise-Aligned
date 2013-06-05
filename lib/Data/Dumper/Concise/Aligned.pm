@@ -1,16 +1,19 @@
 package Data::Dumper::Concise::Aligned;
 
 use 5.010000;
+use strict;
+use warnings;
 use Scalar::Util qw/reftype/;
 use Text::Wrap qw/wrap/;
 
-our $VERSION = '0.21';
+our $VERSION = '0.22';
+our @ISA;
 
 require Exporter;
 require Data::Dumper;
 
 BEGIN { @ISA = qw/Exporter/ }
-@EXPORT = qw/DumperA DumperObjectA/;
+our @EXPORT = qw/DumperA DumperObjectA/;
 
 sub DumperObjectA {
   my $dd = Data::Dumper->new( [] );
