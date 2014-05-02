@@ -6,7 +6,7 @@ use warnings;
 use Scalar::Util qw/reftype/;
 use Text::Wrap qw/wrap/;
 
-our $VERSION = '0.22';
+our $VERSION = '0.23';
 our @ISA;
 
 require Exporter;
