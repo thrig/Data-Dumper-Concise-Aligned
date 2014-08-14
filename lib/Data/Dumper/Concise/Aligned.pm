@@ -69,7 +69,7 @@ following can expand out to include the desired Dumper routine:
 
 =head1 AUTHOR
 
-Jeremy Mates, E<lt>jmates@cpan.orgE<gt>
+thrig - Jeremy Mates (cpan:JMATES) C<< <jmates at cpan.org> >>
 
 =head1 COPYRIGHT AND LICENSE
 
